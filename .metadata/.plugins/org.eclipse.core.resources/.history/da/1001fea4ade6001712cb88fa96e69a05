@@ -1,0 +1,13 @@
+package data;
+
+import java.util.List;
+
+import entities.Record;
+
+public interface RecordDAO {
+
+	List<Record> show();
+
+	boolean deleteRecord(int id);
+
+}

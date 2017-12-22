@@ -1,0 +1,11 @@
+package controllers;
+
+@RestController
+public class ExerciseController {
+	@Autowired
+	private RecordDAO dao;
+	
+	
+	
+
+}
