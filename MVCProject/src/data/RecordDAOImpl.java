@@ -31,7 +31,6 @@ public class RecordDAOImpl implements RecordDAO {
 			return em.find(Record.class, id);
 		}
 		
-		
 		@Override
 		public boolean deleteRecord(int id) {
 			try {

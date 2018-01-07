@@ -1,0 +1,27 @@
+<h1>Exercises</h1>
+
+<table ng-hide="vm.selected">
+  <tr>
+    <th>--Exercise--</th>
+    <th>----Reps----</th>
+    <th>----Weight-----</th>
+    <th>----Date----</th>
+    <th>--Delete--</th>
+  </tr>
+  <tr>
+ 	<form>
+  		<td><input type="text" placeholder="Exercise" ng-model="exercise.activity" /></td>
+  		<td><input type="text" placeholder="Reps" ng-model="exercise.weight"/></td>
+  		<td></td>
+  		<td><input type="submit" value="Add Item" ng-click="vm.addExercise(exercise); task = {};"/></td>
+		<td></td>
+	</form>
+  </tr>
+  <tr ng-repeat="num in vm.todos">
+    <td ng-click = "vm.displayTodo(num)">{{num.task}}</td>
+    <td ng-click = "vm.displayTodo(num)">{{num.description}}</td>
+    <td  class="mark"><input type="checkbox" ng-change="vm.updateTodo(num)" ng-model="num.completed"/></td>
+    <td>{{num.completed}}</td>
+    <td ng-click = "vm.destroy(num.id)"> Delete </td>
+  </tr>
+</table>
