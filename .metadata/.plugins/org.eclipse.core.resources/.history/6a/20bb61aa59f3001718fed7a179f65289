@@ -1,0 +1,38 @@
+<h1>Exercises</h1>
+
+<div ng-show="vm.selected">
+	<form>
+	    <input type="text" placeholder="Task" ng-model="vm.copy.task" value="{{vm.copy.task}}"></input>
+	    <input type="text" placeholder="Description" ng-model="vm.copy.description" value="{{vm.copy.description}}"></input>
+	    <input type="checkbox" ng-model="vm.copy.completed"/>
+	    <input type="submit" ng-click="vm.submitEdit()" value="Save"></input>	
+	    <input type="submit" ng-click="vm.resetEdit()" value="Reset"></input>	
+	    <input type="submit" ng-click="vm.displayTable()" value="Go back"></input>	    
+    </form>
+</div>
+
+<table ng-hide="vm.selected">
+  <tr>
+    <th>--Exercise--</th>
+    <th>----Reps----</th>
+    <th>----Weight-----</th>
+    <th>----Date----</th>
+    <th>--Delete--</th>
+  </tr>
+  <tr>
+ 	<form>
+  		<td><input type="text" placeholder="Exercise" ng-model="exercise.activity" /></td>
+  		<td><input type="text" placeholder="Reps"/></td>
+  		<td><input type="text" placeholder="Weight" ng-model="exercise.weight"/></td>
+  		<td><input type="submit" value="Add Item" ng-click="vm.addExercise(exercise); exercise = {};"/></td>
+		<td></td>
+	</form>
+  </tr>
+  <tr ng-repeat="x in vm.exercises">
+    <td "vm.displayTodo(num)">{{x.activity}}</td>
+    <td></td>
+    <td>{{x.weight}}</td>
+    <td></td>
+    <td ng-click = "vm.destroy(x.id)"> Delete </td>
+  </tr>
+</table>

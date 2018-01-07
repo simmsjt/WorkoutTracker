@@ -3,12 +3,10 @@ angular.module('appModule')
 	  templateUrl : 'app/appModule/exercise/exercise.component.html',
 	  controller: function(exerciseService){
 		  var vm = this;
-		  
 		  vm.selected = null;
 		  vm.copy = null;
 		  vm.exercises = [];
-		  
-		  
+		  reload();
 		  
 		  function reload(){
 			  exerciseService.index().then(function(res){
@@ -19,9 +17,8 @@ angular.module('appModule')
 			  });
 		  }
 		  
-		  /*
-		  vm.addTodo = function(todo){
-			  todoService.create(todo).then(function(res){
+		  vm.addExercise = function(exercise){
+			  exerciseService.create(exercise).then(function(res){
 				 console.log(res);
 				 reload();
 			  }).catch(function(error){
@@ -30,17 +27,8 @@ angular.module('appModule')
 			  
 	       }
 		  
-		  vm.submitEdit = function(){
-			  todoService.update(vm.copy).then(function(res){
-				 console.log(res);
-				 vm.displayTable();
-			  }).catch(function(error){
-				  console.log(error);
-			  });
-	       }
-		  
-	      vm.updateTodo = function(todo){
-	    	  todoService.update(todo).then(function(res){
+	      vm.updateExercise = function(exercise){
+	    	  exerciseService.update(exercise).then(function(res){
 					 console.log(res);
 					 reload();
 				  }).catch(function(error){
@@ -48,35 +36,19 @@ angular.module('appModule')
 				  });
 	      };
 	      
-	      vm.getNumTodos = function() {
-		        return vm.todos.length;
-		  };
-		  
-		  vm.displayTodo = function(todo){
-			  vm.selected = todo;
-			  vm.copy = angular.copy(vm.selected);
-		  };
-		  
-		  vm.resetEdit = function(){
-			  vm.copy = angular.copy(vm.selected);
-		  };
-		  
 		  vm.destroy = function(id){
-			  todoService.destroy(id).then(function(res){
+			  exerciseService.destroy(id).then(function(res){
 					 console.log(res);
 					 reload();
 				  }).catch(function(error){
 					  console.log(error);
 				  });
-		  };
+		  };	
 		  
-		  vm.displayTable = function(){
-			  vm.selected = null;
-			  vm.copy = null;
-			  reload();
+		  vm.displayUpdate = function(exercise){
+			  vm.selected = exercise;
+			  vm.copy = angular.copy(vm.selected);
 		  };
-	      
-		 */
 	  },
 	  controllerAs: 'vm'
   })

@@ -1,0 +1,45 @@
+angular.module('appModule')
+.factory('exerciseService',function($http){
+	var service = {};
+	
+	service.index = function(){
+		return $http({
+		      method : 'GET',
+		      url : 'rest/exercise'
+		    })
+	};
+	
+	
+	service.create = function(exercise){
+		return $http({
+			method: 'POST',
+			url : 'rest/exercise',
+			headers : {
+			    'Content-Type' : 'application/json'
+			  },
+			data : exercise
+		})
+	};
+	
+	service.destroy = function(id){
+		return $http({
+			method: 'DELETE',
+			url : 'rest/exercise/' + id
+		})
+	};
+
+    service.update = function(exercise){
+    		return $http({
+    			method: 'PUT',
+    			url:  'rest/exercise/' + exercise.id,
+    			headers : {
+    			    'Content-Type' : 'application/json'
+    			  },
+    			data : exercise
+    		})
+    	
+    };
+    
+	
+	return service;
+})

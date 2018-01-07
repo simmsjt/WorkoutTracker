@@ -9,42 +9,36 @@ angular.module('appModule')
 		    })
 	};
 	
-	/*
-	service.create = function(task){
-		task.completed = false; 
+	service.create = function(exercise){
 		return $http({
 			method: 'POST',
-			url : 'rest/user/1/todo',
+			url : 'rest/exercise',
 			headers : {
 			    'Content-Type' : 'application/json'
 			  },
-			data : task
+			data : exercise
 		})
 	};
 	
 	service.destroy = function(id){
 		return $http({
 			method: 'DELETE',
-			url : 'rest/user/1/todo/' + id
+			url : 'rest/exercise/' + id
 		})
 	};
-      
-    service.getNumTasks = function() {
-        return tasks.length;
-    };
 
-    service.update = function(task){
+    service.update = function(exercise){
     		return $http({
     			method: 'PUT',
-    			url: 'rest/user/1/todo/' + task.id,
+    			url:  'rest/exercise/' + exercise.id,
     			headers : {
     			    'Content-Type' : 'application/json'
     			  },
-    			data : task
+    			data : exercise
     		})
     	
     };
     
-	*/
+	
 	return service;
 })

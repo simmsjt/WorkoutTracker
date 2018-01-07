@@ -1,0 +1,63 @@
+angular.module('appModule')
+  .component('exercise', {
+	  templateUrl : 'app/appModule/exercise/exercise.component.html',
+	  controller: function(exerciseService){
+		  var vm = this;
+		  
+		  vm.selected = null;
+		  vm.copy = null;
+		  vm.exercises = [];
+		  
+		  
+		  
+		  function reload(){
+			  exerciseService.index().then(function(res){
+				  console.log(res);
+				  vm.exercises = res.data;
+			  }).catch(function(error){
+				  console.log(error);
+			  });
+		  }
+		  
+		  reload();
+		  
+		  
+		  vm.addExercise = function(exercise){
+			  exerciseService.create(exercise).then(function(res){
+				 console.log(res);
+				 reload();
+			  }).catch(function(error){
+				  console.log(error);
+			  });
+			  
+	       }
+		  
+//		  vm.submitEdit = function(){
+//			  todoService.update(vm.copy).then(function(res){
+//				 console.log(res);
+//				 vm.displayTable();
+//			  }).catch(function(error){
+//				  console.log(error);
+//			  });
+//	       }
+		  
+	      vm.updateExercise = function(exercise){
+	    	  exerciseService.update(todo).then(function(res){
+					 console.log(res);
+					 reload();
+				  }).catch(function(error){
+					  console.log(error);
+				  });
+	      };
+	      
+		  vm.destroy = function(id){
+			  exerciseService.destroy(id).then(function(res){
+					 console.log(res);
+					 reload();
+				  }).catch(function(error){
+					  console.log(error);
+				  });
+		  };	
+	  },
+	  controllerAs: 'vm'
+  })
